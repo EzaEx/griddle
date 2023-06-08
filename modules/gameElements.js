@@ -1,3 +1,5 @@
+import { LETTERS, WEIGHTS } from "./letters.js";
+
 const BOARD_DIM = 5;
 
 const board = (() => {
@@ -129,6 +131,26 @@ const charChooser = (() => {
         return list[Math.floor(Math.random() * list.length)];
     }
 
+    function randomWeightedLetter() {
+        let selection = Math.random();
+
+        let accumulator = 0;
+
+        for (let i = 0; i < WEIGHTS.length; i++) {
+            accumulator += WEIGHTS[i];
+            if (selection < accumulator) {
+                return LETTERS[i];
+            }
+        }
+
+        throw "NO LETTER SELECTION ERROR";
+        return "E";
+    }
+
+    for (let i = 0; i < 1000; i++) {
+        console.log(randomWeightedLetter());
+    }
+
     function generateCharList(len) {
         const VOWELS = "AEIOU";
         const CONSTANANTS = "BCDFGHKLMNPRSTVWY";
@@ -136,11 +158,7 @@ const charChooser = (() => {
         let choices = [];
 
         for (let i = 0; i < len; i++) {
-            choices.push(
-                Math.random() < 0.38
-                    ? randFromList(VOWELS)
-                    : randFromList(CONSTANANTS)
-            );
+            choices.push(randomWeightedLetter());
         }
 
         return choices;

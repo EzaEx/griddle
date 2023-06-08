@@ -131,7 +131,7 @@ const charChooser = (() => {
 
     function generateCharList(len) {
         const VOWELS = "AEIOU";
-        const CONSTANANTS = "BCDFGHJKLMNPQRSTVWXYZ";
+        const CONSTANANTS = "BCDFGHKLMNPRSTVWY";
 
         let choices = [];
 

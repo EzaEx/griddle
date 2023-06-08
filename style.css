@@ -1,0 +1,103 @@
+:root {
+    --squareWidth: calc(min(10vh, 12vw));
+    --rowCol: rgb(59, 125, 255);
+    --colCol: rgb(244, 92, 92);
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+body {
+    text-align: center;
+}
+
+#board {
+    position: relative;
+    margin: auto;
+    left: calc(var(--squareWidth) / 2 + 5px);
+}
+
+#finalScore * {
+    margin-top: 0;
+}
+
+.square {
+    border: 4px solid;
+
+    margin: 2px;
+
+    font-size: calc(var(--squareWidth) / 2);
+
+    display: inline-block;
+
+    width: var(--squareWidth);
+    height: var(--squareWidth);
+
+    line-height: var(--squareWidth);
+    cursor: default;
+
+    border-radius: 10px;
+}
+
+.square.blank {
+    visibility: hidden;
+}
+
+.square.scoring {
+    visibility: hidden;
+    border-color: transparent;
+    font-weight: bold;
+    font-family: monospace;
+    color: var(--rowCol);
+}
+.square.scoring.columnScore {
+    color: var(--colCol);
+}
+.square.scoring.visible {
+    visibility: visible;
+}
+
+.row.finalRow {
+    display: none;
+}
+.row.finalRow.visible {
+    display: unset;
+}
+
+.row .square:hover:not(.isSet):not(.scoring) {
+    background-color: bisque;
+    cursor: pointer;
+}
+
+.row .square.isSet {
+    background-color: bisque;
+}
+
+#nextLetter {
+    background-color: bisque;
+}
+
+.row .square.isSet.rowWord {
+    background-color: var(--rowCol);
+}
+
+.row .square.isSet.colWord {
+    background-color: var(--colCol);
+}
+
+.row .square.isSet.colWord.rowWord {
+    background-color: rgb(196, 77, 196);
+}
+
+.desc {
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 0.25em;
+}

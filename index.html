@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>GridWord</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>GridWord</h1>
+        <p>
+            <i
+                >Click a square to place the current letter there,<br />Try to
+                make the longest word in each row and column</i
+            >
+        </p>
+
+        <div id="board" class="noselect"></div>
+
+        <br /><br />
+
+        <div id="nextContainer">
+            <div id="nextLetter" class="square"></div>
+
+            <div class="desc">current letter</div>
+        </div>
+
+        <div id="finalScore" hidden>
+            <h1>You scored 9!</h1>
+        </div>
+
+        <script src="index.js" type="module"></script>
+    </body>
+</html>

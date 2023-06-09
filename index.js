@@ -44,7 +44,7 @@ const game = (() => {
             board.setScore(i, data.len);
             totalScore += data.len;
 
-            board.markWord(i, data.start, data.end);
+            if (data.len != 0) board.markWord(i, data.start, data.end);
         });
 
         board.revealScores();

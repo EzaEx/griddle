@@ -113,15 +113,64 @@ const board = (() => {
         },
 
         markWord: (index, start, end) => {
+            let highlight = document.createElement("div");
+            document.body.appendChild(highlight);
+
+            let drawHighlight;
+            let rec;
+
             if (index < BOARD_DIM) {
-                for (let x = start; x < end; x++) {
-                    gridArray[index][x].classList.add("rowWord");
-                }
+                highlight.className = "rowHighlight";
+
+                drawHighlight = () => {
+                    rec = gridArray[index][start].getBoundingClientRect();
+
+                    let last =
+                        gridArray[index][end - 1].getBoundingClientRect();
+
+                    rec.width = last.right - rec.left;
+
+                    rec.y += rec.height / 4;
+                    rec.x += rec.height / 6;
+                    rec.width -= rec.height / 3;
+                    rec.height /= 2;
+
+                    highlight.style.top = rec.top + "px";
+                    highlight.style.left = rec.left + "px";
+                    highlight.style.width = rec.width + "px";
+                    highlight.style.height = rec.height + "px";
+                };
             } else {
-                for (let y = start; y < end; y++) {
-                    gridArray[y][index - BOARD_DIM].classList.add("colWord");
-                }
+                highlight.className = "colHighlight";
+
+                drawHighlight = () => {
+                    console.log("hit it");
+                    rec =
+                        gridArray[start][
+                            index - BOARD_DIM
+                        ].getBoundingClientRect();
+
+                    let last =
+                        gridArray[end - 1][
+                            index - BOARD_DIM
+                        ].getBoundingClientRect();
+
+                    rec.height = last.bottom - rec.top;
+
+                    rec.x += rec.width / 4;
+                    rec.y += rec.width / 6;
+                    rec.height -= rec.width / 3;
+                    rec.width /= 2;
+
+                    highlight.style.top = rec.top + "px";
+                    highlight.style.left = rec.left + "px";
+                    highlight.style.width = rec.width + "px";
+                    highlight.style.height = rec.height + "px";
+                };
             }
+
+            drawHighlight();
+            window.addEventListener("resize", drawHighlight);
         },
     };
 })();
@@ -145,10 +194,6 @@ const charChooser = (() => {
 
         throw "NO LETTER SELECTION ERROR";
         return "E";
-    }
-
-    for (let i = 0; i < 1000; i++) {
-        console.log(randomWeightedLetter());
     }
 
     function generateCharList(len) {

@@ -1,7 +1,7 @@
 :root {
     --squareWidth: calc(min(10vh, 12vw));
-    --rowCol: rgb(59, 125, 255);
-    --colCol: rgb(244, 92, 92);
+    --rowCol: rgb(132, 112, 222);
+    --colCol: rgb(223, 108, 108);
 }
 
 .noselect {
@@ -22,10 +22,34 @@ body {
     position: relative;
     margin: auto;
     left: calc(var(--squareWidth) / 2 + 5px);
+    width: fit-content;
+}
+
+button {
+    font-size: 1.1em;
 }
 
 #finalScore * {
     margin-top: 0;
+    margin-bottom: 0.2em;
+}
+
+.rowHighlight {
+    position: absolute;
+
+    border-radius: 25px;
+    background-color: rgba(30, 78, 251, 0.389);
+
+    mix-blend-mode: multiply;
+}
+
+.colHighlight {
+    position: absolute;
+
+    border-radius: 25px;
+    background-color: rgba(255, 0, 0, 0.379);
+
+    mix-blend-mode: multiply;
 }
 
 .square {
@@ -43,7 +67,7 @@ body {
     line-height: var(--squareWidth);
     cursor: default;
 
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .square.blank {
@@ -53,9 +77,10 @@ body {
 .square.scoring {
     visibility: hidden;
     border-color: transparent;
-    font-weight: bold;
-    font-family: monospace;
+    font-weight: bolder;
     color: var(--rowCol);
+
+    font-family: monospace;
 }
 .square.scoring.columnScore {
     color: var(--colCol);
@@ -72,28 +97,16 @@ body {
 }
 
 .row .square:hover:not(.isSet):not(.scoring) {
-    background-color: bisque;
+    background-color: rgb(249, 229, 205);
     cursor: pointer;
 }
 
 .row .square.isSet {
-    background-color: bisque;
+    background-color: rgb(249, 229, 205);
 }
 
 #nextLetter {
-    background-color: bisque;
-}
-
-.row .square.isSet.rowWord {
-    background-color: var(--rowCol);
-}
-
-.row .square.isSet.colWord {
-    background-color: var(--colCol);
-}
-
-.row .square.isSet.colWord.rowWord {
-    background-color: rgb(196, 77, 196);
+    background-color: rgb(249, 229, 205);
 }
 
 .desc {

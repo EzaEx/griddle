@@ -51,6 +51,25 @@ const game = (() => {
         charChooser.showScore(totalScore);
     }
 
+    const e_countdown = document.getElementById("countdown");
+
+    function updateTime() {
+        let now = new Date();
+        e_countdown.innerText = `New letter sequence in ${
+            23 - now.getUTCHours()
+        } hours ${59 - now.getUTCMinutes()} minutes...`;
+    }
+
+    updateTime();
+    setInterval(updateTime, 5000);
+
+    if (localStorage["albatros"]) {
+        document.getElementById("intro").hidden = true;
+    } else {
+        e_countdown.hidden = true;
+        localStorage["albatros"] = true;
+    }
+
     board.setClickCallback(onClickCallback);
 
     board.setPlacingChar(charChooser.getCurrentChoice());

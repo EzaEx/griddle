@@ -26,6 +26,7 @@ h2 {
 body {
     text-align: center;
     font-family: sans-serif;
+    position: relative;
 }
 
 #board {

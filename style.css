@@ -14,8 +14,18 @@
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 2em;
+}
+
 body {
     text-align: center;
+    font-family: sans-serif;
 }
 
 #board {
@@ -67,7 +77,9 @@ button {
     line-height: var(--squareWidth);
     cursor: default;
 
-    border-radius: 15px;
+    border-radius: 16px;
+
+    font-family: serif;
 }
 
 .square.blank {
@@ -79,8 +91,7 @@ button {
     border-color: transparent;
     font-weight: bolder;
     color: var(--rowCol);
-
-    font-family: monospace;
+    font-family: sans-serif;
 }
 .square.scoring.columnScore {
     color: var(--colCol);
